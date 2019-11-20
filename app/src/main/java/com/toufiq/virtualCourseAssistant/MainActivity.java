@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
     private TextToSpeech tts;
     private SpeechRecognizer speechRecog;
-
+// push
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
