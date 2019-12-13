@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
+import com.wang.avi.AVLoadingIndicatorView;
+
 public class SplashScreen extends AppCompatActivity {
     private static int SPLASH_TIME_OUT=2000;
+    private AVLoadingIndicatorView avi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +24,7 @@ public class SplashScreen extends AppCompatActivity {
                 finish();
             }
         }, SPLASH_TIME_OUT);
-
-
-
+        
     }
+    
 }
