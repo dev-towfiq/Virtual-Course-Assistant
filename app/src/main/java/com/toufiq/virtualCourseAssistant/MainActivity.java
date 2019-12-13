@@ -1,6 +1,7 @@
 package com.toufiq.virtualCourseAssistant;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -28,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
     private TextToSpeech tts;
     private SpeechRecognizer speechRecog;
-// push
+
+    // push
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         // No explanation needed; request the permission
                         ActivityCompat.requestPermissions(MainActivity.this,
-                                new String[]{Manifest.permission.RECORD_AUDIO},MY_PERMISSIONS_REQUEST_RECORD_AUDIO);
+                                new String[]{Manifest.permission.RECORD_AUDIO}, MY_PERMISSIONS_REQUEST_RECORD_AUDIO);
 
                         // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
                         // app-defined int constant. The callback method gets the
@@ -63,13 +65,13 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     // Permission has already been granted
                     Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-                    intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-                    intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS,20);
+                    intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                    intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 20);
                     speechRecog.startListening(intent);
                 }
             }
         });
-        
+
         initializeTextToSpeech();
         initializeSpeechRecognizer();
     }
@@ -127,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("MissingPermission")
     private void processResult(String result_message) {
         result_message = result_message.toLowerCase();
 
@@ -137,33 +140,49 @@ public class MainActivity extends AppCompatActivity {
 //        Third: Is the earth flat or a sphere?
 //        Fourth: Open a browser and open url
 
-        if(result_message.indexOf("what") != -1){
+        if (result_message.indexOf("what") != -1) {
 
-            if(result_message.indexOf("your name") != -1){
+            if (result_message.indexOf("your name") != -1) {
                 speak("My Name is Kitto");
             }
-             if(result_message.indexOf("software") != -1){
+            if (result_message.indexOf("software") != -1) {
 
-                 if(result_message.indexOf("engineering") != -1){
-                     speak("Software engineering is the application of engineering to the design, development, implementation and maintenance of software in a systematic method");
-                 } else{
-                     speak("Software is a general term for the various kinds of programs used to operate computers. And related devices with all its associated documents and configuration data. For example," +
-                             "without your Internet browser, you could not surf the Internet or read this page. Without an operating system, the browser could not run on your computer" + "Like me, i'm a software. And Towfiq created me");
-                 }
+                if (result_message.indexOf("engineering") != -1) {
+                    speak("Software engineering is the application of engineering to the design, development, implementation and maintenance of software in a systematic method");
+                } else {
+                    speak("Software is a general term for the various kinds of programs used to operate computers. And related devices with all its associated documents and configuration data. For example," +
+                            "without your Internet browser, you could not surf the Internet or read this page. Without an operating system, the browser could not run on your computer" + "Like me, i'm a software. And Towfiq created me");
+                }
 
-            }
-
-
-            else if (result_message.indexOf("time") != -1){
-                String time_now = DateUtils.formatDateTime(this, new Date().getTime(),DateUtils.FORMAT_SHOW_TIME);
+            } else if (result_message.indexOf("time") != -1) {
+                String time_now = DateUtils.formatDateTime(this, new Date().getTime(), DateUtils.FORMAT_SHOW_TIME);
                 speak("The time is now: " + time_now);
             }
         }
 
 
+        if (result_message.indexOf("our team info") != -1) {
+            Intent intent = new Intent(this, ActivityAboutTeam.class);
+            startActivity(intent);
+        }
 
-
-
+        if (result_message.indexOf("my faculty info") != -1) {
+            Intent intent = new Intent(this, ActivityAboutFaculty.class);
+            startActivity(intent);
+        }
+        if (result_message.indexOf("call my faculty") != -1) {
+            Intent intent = new Intent(Intent.ACTION_CALL);
+            intent.setData(Uri.parse("tel:001087654321"));
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            startActivity(intent);
+        }
+        if (result_message.indexOf("email my faculty") != -1){
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:abc@xyz.com"));
+            startActivity(intent);
+        }
 
          if (result_message.indexOf("browser") != -1){
             speak("Opening a browser right away master.");
@@ -183,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
              else if(result_message.indexOf("ridom") != -1){
-                 speak("yes");
+                 speak("yes. he is the chef operation officer  of iithbd");
 
              }
             else {
@@ -252,4 +271,23 @@ public class MainActivity extends AppCompatActivity {
         initializeSpeechRecognizer();
         initializeTextToSpeech();
     }
+
+    public void button1(View view) {
+        Intent intent= new Intent(this,ActivityAboutTeam.class);
+        startActivity(intent);
+    }
+
+    public void faculty(View view) {
+        Intent intent= new Intent(this,ActivityAboutFaculty.class);
+        startActivity(intent);
+    }
 }
+//        Q1: our team info
+//        Q2: my faculty info
+//        Q3: call my faculty
+//        Q4: email my faculty
+//        Q5: what is software?
+//        Q6: what is software engineering?
+//        Q7: who are you?
+//
+

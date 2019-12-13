@@ -3,6 +3,7 @@
     package="com.toufiq.virtualCourseAssistant">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -12,18 +13,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.toufiq.virtualCourseAssistant.SplashScreen"
+            android:name=".ActivityAboutFaculty"
+            android:label="Faculty Contact Info"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".ActivityAboutTeam"
+            android:label="About Our Team"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.toufiq.virtualCourseAssistant.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
