@@ -14,7 +14,7 @@ public class ActivityShowLecture extends AppCompatActivity {
         String fileUrl = "https://towfiqalahesohel.com/files/2019/12/L-1.pdf";
         String finalUrl = "https://docs.google.com/gview?embedded=true&url=" + fileUrl;
         webView.getSettings().setSupportZoom(true);
-        //webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(finalUrl);
     }
 }
