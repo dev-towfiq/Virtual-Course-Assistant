@@ -29,8 +29,7 @@ public class ActivityAboutFaculty extends AppCompatActivity {
 
     public void email_btn(View view) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:abc@xyz.com"));
+        intent.setData(Uri.parse("mailto:khan.habibullah@northsouth.edu"));
         startActivity(intent);
     }
 }
-//Intent.createChooser(emailIntent, "Send feedback")
