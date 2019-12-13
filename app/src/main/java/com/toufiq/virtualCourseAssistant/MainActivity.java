@@ -140,37 +140,37 @@ public class MainActivity extends AppCompatActivity {
 //        Third: Is the earth flat or a sphere?
 //        Fourth: Open a browser and open url
 
-        if (result_message.indexOf("what") != -1) {
+        if (result_message.contains("what")) {
 
-            if (result_message.indexOf("your name") != -1) {
+            if (result_message.contains("your name")) {
                 speak("My Name is Kitto");
             }
-            if (result_message.indexOf("software") != -1) {
+            if (result_message.contains("software")) {
 
-                if (result_message.indexOf("engineering") != -1) {
+                if (result_message.contains("engineering")) {
                     speak("Software engineering is the application of engineering to the design, development, implementation and maintenance of software in a systematic method");
                 } else {
                     speak("Software is a general term for the various kinds of programs used to operate computers. And related devices with all its associated documents and configuration data. For example," +
                             "without your Internet browser, you could not surf the Internet or read this page. Without an operating system, the browser could not run on your computer" + "Like me, i'm a software. And Towfiq created me");
                 }
 
-            } else if (result_message.indexOf("time") != -1) {
-                String time_now = DateUtils.formatDateTime(this, new Date().getTime(), DateUtils.FORMAT_SHOW_TIME);
-                speak("The time is now: " + time_now);
             }
         }
 
-
-        if (result_message.indexOf("our team info") != -1) {
+        if (result_message.contains("open lecture 1")) {
+            Intent intent = new Intent(this, ActivityShowLecture.class);
+            startActivity(intent);
+        }
+        if (result_message.contains("our team info")) {
             Intent intent = new Intent(this, ActivityAboutTeam.class);
             startActivity(intent);
         }
 
-        if (result_message.indexOf("my faculty info") != -1) {
+        if (result_message.contains("my faculty info")) {
             Intent intent = new Intent(this, ActivityAboutFaculty.class);
             startActivity(intent);
         }
-        if (result_message.indexOf("call my faculty") != -1) {
+        if (result_message.contains("call my faculty")) {
             Intent intent = new Intent(Intent.ACTION_CALL);
             intent.setData(Uri.parse("tel:001087654321"));
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
@@ -178,39 +178,19 @@ public class MainActivity extends AppCompatActivity {
             }
             startActivity(intent);
         }
-        if (result_message.indexOf("email my faculty") != -1){
+        if (result_message.contains("email my faculty")){
             Intent intent = new Intent(Intent.ACTION_SENDTO);
-            intent.setData(Uri.parse("mailto:abc@xyz.com"));
+            intent.setData(Uri.parse("mailto:@khan.habibullah@northsouth.edu"));
             startActivity(intent);
         }
 
-         if (result_message.indexOf("browser") != -1){
-            speak("Opening a browser right away master.");
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://towfiq.me"));
-            startActivity(intent);
-        }
-         if (result_message.indexOf("who") != -1){
-            if(result_message.indexOf("you") != -1){
+
+         if (result_message.contains("who")){
+            if(result_message.contains("you")){
                 speak("I'm Kitto. I'm a your cse 3 2 7 course assistant. I am developed by Towfiq");
 
             }
         }
-
-         if (result_message.indexOf("do you know") != -1){
-            if(result_message.indexOf("rupon") != -1){
-                speak("yes i know. He is Era's boyfriend");
-
-            }
-             else if(result_message.indexOf("ridom") != -1){
-                 speak("yes. he is the chef operation officer  of iithbd");
-
-             }
-            else {
-                speak("No. i don't know.");
-
-            }
-        }
-
     }
 
     private void initializeTextToSpeech() {
@@ -244,21 +224,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     protected void onPause() {
         super.onPause();
         tts.shutdown();
@@ -281,6 +246,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent= new Intent(this,ActivityAboutFaculty.class);
         startActivity(intent);
     }
+
+
 }
 //        Q1: our team info
 //        Q2: my faculty info
