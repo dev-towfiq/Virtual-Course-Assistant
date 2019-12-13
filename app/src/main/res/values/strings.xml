@@ -1,6 +1,11 @@
 <resources>
+
     <string name="app_name">Course Assistant</string>
-    <string name="action_settings">Settings</string>
+    <string name="what_is_your_name">My Name is Lali ta</string>
+    <string name="who_are_your">I am Lalita. I am a your cse 3 2 7 course assistant. I am developed by Towfiq</string>
+    <string name="who_is_Lalita">  Hi, I am Lali ta. I am your CSE 3 2 7 course assistant. You can ask me any question regarding this course</string>
     <string name="tts_no_engines">There were no Text to Speech Engines located in the device</string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="software_engineering">Software engineering is the application of engineering to the design, development, implementation and maintenance of software in a systematic method</string>
+    <string name="software">Software is a general term for the various kinds of programs used to operate computers. And related devices with all its associated documents and configuration data. For example,
+                            without your Internet browser, you could not surf the Internet or read this page. Without an operating system, the browser could not run on your computer. Like me, i am a software. And Towfiq created me</string>
 </resources>
