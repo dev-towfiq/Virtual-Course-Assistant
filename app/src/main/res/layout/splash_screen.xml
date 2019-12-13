@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:visibility="visible"
         app:indicatorColor="#ffffff"
-        app:indicatorName="BallBeatIndicator"
+        app:indicatorName="BallPulseIndicator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
